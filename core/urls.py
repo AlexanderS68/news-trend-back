@@ -7,8 +7,7 @@ from rest_framework_simplejwt.views import(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', include('sectors.urls', namespace='sectors')),
-    path('sectors/', include('sectors.urls', namespace='sectors')),
+    path('sectors/', include('sector.urls', namespace='sectors')),
     path('stock/', include('stocks.urls', namespace='stocks')),
     path('users/', include('users.urls', namespace='users')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framwork')),
