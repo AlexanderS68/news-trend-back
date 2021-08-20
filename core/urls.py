@@ -9,7 +9,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('/', include('sectors.urls', namespace='sectors')),
     path('stock/', include('stocks.urls', namespace='stocks')),
-    path('articles/', include('articles.urls', namespace='articles')),
     path('users/', include('users.urls', namespace='users')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framwork')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
