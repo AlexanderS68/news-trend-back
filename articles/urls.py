@@ -1,4 +1,4 @@
-app_name = "stocks"
+app_name = 'articles'
 
 urlpatterns = [
     
