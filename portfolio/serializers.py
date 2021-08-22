@@ -9,7 +9,7 @@ class StockWatchlistSerializer:
         fields = "__all__"
 
 
-class StockWatchlistSerializer:
+class ArticleWatchlistSerializer:
 
     class Meta:
         model = ArticleWatchlist

@@ -11,3 +11,8 @@ class StockWatchlistViewSet(viewsets.ModelViewSet):
     queryset = StockWatchlist.objects.all()
     serializer_class = StockWatchlistSerializer
     permission_classes = [AllowAny]
+
+class ArticleWatchlistViewSet(viewsets.ModelViewSet):
+    queryset = StockWatchlist.objects.all()
+    serializer_class = StockWatchlistSerializer
+    permission_classes = [AllowAny]
