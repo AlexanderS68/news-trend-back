@@ -1,5 +1,8 @@
-app_name = 'articles'
+from rest_framework.routers import DefaultRouter
+from .views import ArticleViewSet
 
-urlpatterns = [
-    
-]
+app_name = "articles"
+
+
+articlesRouter = DefaultRouter()
+articlesRouter.register('', ArticleViewSet.as_view())

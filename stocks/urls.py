@@ -1,7 +1,9 @@
-from django import __path__
+from stocks.models import Stock
+from rest_framework.routers import DefaultRouter
+from .views import StockViewSet
 
 app_name = "stocks"
 
-urlpatterns = [
-    
-]
+
+stockRouter = DefaultRouter()
+stockRouter.register('', StockViewSet.as_view())

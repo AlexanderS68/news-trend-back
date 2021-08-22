@@ -4,3 +4,6 @@ from django.db import models
 
 class StockWatchlist(models.Model):
     pass
+
+class ArticleWatchlist(models.Model):
+    pass
