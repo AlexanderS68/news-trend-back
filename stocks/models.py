@@ -11,5 +11,5 @@ class Stock(models.Model):
     market_cap = models.IntegerField()
     volume = models.IntegerField()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return (f'{self.ticker}: {self.bid_price}')

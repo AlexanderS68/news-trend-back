@@ -23,9 +23,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'articles',
     'portfolio',
-    'sector',
     'stocks',
-    'stockWatchlist',
     'users',
     'rest_framework',
     'corsheaders',
