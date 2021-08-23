@@ -1,18 +1,26 @@
-from django.shortcuts import render
+from articles.models import Article
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
-from .serializers import StockWatchlistSerializer
-from .models import StockWatchlist
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from .serializers import Stock_watchlist_serializer
+from .models import Stock_watchlist
 from rest_framework.decorators import action
 # Create your views here.
 
 
-class StockWatchlistViewSet(viewsets.ModelViewSet):
-    queryset = StockWatchlist.objects.all()
-    serializer_class = StockWatchlistSerializer
+class Stock_watchlist_view_set(viewsets.ModelViewSet):
+    queryset = Stock_watchlist.objects.all()
+    serializer_class = Stock_watchlist_serializer
     permission_classes = [AllowAny]
 
-class ArticleWatchlistViewSet(viewsets.ModelViewSet):
-    queryset = StockWatchlist.objects.all()
-    serializer_class = StockWatchlistSerializer
+    def get_queryset(self):
+        return Stock_watchlist.objects.all()
+
+
+
+class Article_watchlist_view_set(viewsets.ModelViewSet):
+    queryset = Stock_watchlist.objects.all()
+    serializer_class = Stock_watchlist_serializer
     permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        return Article.objects.all()

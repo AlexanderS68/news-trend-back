@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 
 ## Serializes current user
-class UserSerializer(serializers.ModelSerializer):
+class User_serializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
@@ -15,3 +15,5 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+

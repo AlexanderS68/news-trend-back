@@ -1,9 +1,15 @@
-from stocks.models import Stock
+from rest_framework import urlpatterns
 from rest_framework.routers import DefaultRouter
-from .views import StockViewSet
+from django.conf.urls import url, include
+from .views import Stock_view_set
 
 app_name = "stocks"
 
 
-stockRouter = DefaultRouter()
-stockRouter.register('', StockViewSet.as_view())
+stock_router = DefaultRouter()
+stock_router.register('', Stock_view_set, basename='stocks')
+
+urlpatterns = [
+    url('', include(stock_router.urls))
+]
+

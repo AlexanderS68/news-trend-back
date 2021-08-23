@@ -1,16 +1,16 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import StockWatchlist, ArticleWatchlist
+from .models import Stock_watchlist, Article_watchlist
 
-class StockWatchlistSerializer:
+class Stock_watchlist_serializer(serializers.ModelSerializer):
 
     class Meta:
-        model = StockWatchlist
+        model = Stock_watchlist
         fields = "__all__"
 
 
-class ArticleWatchlistSerializer:
+class Article_watchlist_serializer(serializers.ModelSerializer):
 
     class Meta:
-        model = ArticleWatchlist
+        model = Article_watchlist
         fields = "__all__"
