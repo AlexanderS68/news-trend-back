@@ -14,12 +14,11 @@ class Stock_view_set(viewsets.ModelViewSet):
     serializer_class = Stock_serializer
     permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        return Stock.objects.all()
+    
 
-    def post(self, request,  format='json'):
-        serializer = Stock_serializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request,  format='json'):
+    #     serializer = Stock_serializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

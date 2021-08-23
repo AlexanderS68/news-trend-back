@@ -12,4 +12,4 @@ class Stock(models.Model):
     volume = models.IntegerField()
 
     def __str__(self):
-        return (f'{self.ticker}: ${self.bid_price}')
+        return (f'{self.ticker}')
