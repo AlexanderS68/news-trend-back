@@ -12,8 +12,6 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     path('articles/', include('articles.urls', namespace='articles')),
     path('stocks/', include('stocks.urls', namespace='stocks')),
-    path('stockwatchlist/', include('portfolio.urls', namespace='portfolio')),
-    path('articlewatchlist/', include('portfolio.urls', namespace='portfolio')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framwork')),
     path('portfolio/', include('portfolio.urls', namespace='portfolio'))
 ]
