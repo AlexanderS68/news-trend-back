@@ -6,14 +6,14 @@ from django.db.models.fields import IntegerField
 
 class Article(models.Model):
     totalArticles = IntegerField()
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    content = models.TextField()
-    url = models.URLField()
-    image = models.ImageField()
-    publishedAt = models.DateTimeField()
-    sourceName = models.CharField(max_length=100)
-    sentiment = models.CharField(max_length=50)
+    title = models.CharField(max_length=100, blank=True)
+    description = models.TextField(blank=True)
+    content = models.TextField(blank=True)
+    url = models.URLField(blank=True)
+    image = models.ImageField(blank=True)
+    publishedAt = models.DateTimeField(blank=True)
+    sourceName = models.CharField(max_length=100, blank=True)
+    sentiment = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return f"{self.title}"

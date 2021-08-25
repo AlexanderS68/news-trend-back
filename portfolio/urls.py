@@ -10,11 +10,11 @@ stock_watchlist_router.register(
     '', Stock_watchlist_view_set, basename='stockwatchlist')
 
 
-# article_watchlist_router = DefaultRouter()
-# article_watchlist_router.register(
-#     '', Article_watchlist_view_set, basename='articlewatchlist')
+article_watchlist_router = DefaultRouter()
+article_watchlist_router.register(
+    '', Article_watchlist_view_set, basename='articlewatchlist')
 
 urlpatterns = [
-    url('', include(stock_watchlist_router.urls)),
-    # url('', include(article_watchlist_router.urls)),
+    url('stockwatchlist/', include(stock_watchlist_router.urls)),
+    url('articlewatchlist/', include(article_watchlist_router.urls)),
 ]
