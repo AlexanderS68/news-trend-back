@@ -6,6 +6,7 @@ from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
 # Create your views here.
 
+
 class Article_view_set(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = Article_serializer
