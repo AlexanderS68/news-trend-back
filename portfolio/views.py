@@ -16,7 +16,6 @@ class Stock_watchlist_view_set(viewsets.ModelViewSet):
         return Stock_watchlist.objects.all()
 
 
-
 class Article_watchlist_view_set(viewsets.ModelViewSet):
     queryset = Stock_watchlist.objects.all()
     serializer_class = Stock_watchlist_serializer

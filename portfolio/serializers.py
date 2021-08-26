@@ -2,6 +2,7 @@ from django.db.models import fields
 from rest_framework import serializers
 from .models import Stock_watchlist, Article_watchlist
 
+
 class Stock_watchlist_serializer(serializers.ModelSerializer):
 
     class Meta:

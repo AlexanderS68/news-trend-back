@@ -1,15 +1,20 @@
 from django.db import models
-from django.db.models.fields import IntegerField
 
 # Create your models here.
+
+
 class Stock(models.Model):
-    ticker = models.CharField(max_length=6)
-    bid_price = models.DecimalField(decimal_places=2, max_digits=100000000)
-    ask_price = models.DecimalField(decimal_places=2, max_digits=100000000)
-    week_high_52 = models.DecimalField(decimal_places=2, max_digits=100000000)
-    week_low_52 = models.DecimalField(decimal_places=2, max_digits=100000000)
-    market_cap = models.IntegerField()
-    volume = models.IntegerField()
+    name = models.CharField(max_length=100)
+    bidPrice = models.CharField(max_length=100, blank=True)
+    totalVolume = models.CharField(max_length=100, blank=True)
+    openPrice = models.CharField(max_length=100, blank=True)
+    closePrice = models.CharField(max_length=100, blank=True)
+    mark = models.CharField(max_length=100, blank=True)
+    volatility = models.CharField(max_length=100, blank=True)
+    peRatio = models.CharField(max_length=100, blank=True)
+    divAmount = models.CharField(max_length=100, blank=True)
+    divDate = models.CharField(max_length=100, blank=True)
+    markPercentChangeInDouble = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
-        return (f'{self.ticker}: ${self.bid_price}')
+        return (f'{self.name}')
