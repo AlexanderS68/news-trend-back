@@ -4,8 +4,6 @@ from django.shortcuts import render
 from .models import Article
 from rest_framework import viewsets, status, permissions
 from rest_framework.response import Response
-
-from articles.aylienAPI import *
 # Create your views here.
 
 
