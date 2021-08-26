@@ -1,5 +1,5 @@
 from rest_framework.permissions import AllowAny
-from .serializers import ArticleSerializer
+from .serializers import Article_serializer
 from django.shortcuts import render
 from .models import Article
 from rest_framework import viewsets, status, permissions
@@ -46,16 +46,16 @@ def fetchPayload(requestKeyWord, requestStartDate, requestEndDate):
 fetchPayload('energy','NOW-7DAYS','NOW-6DAYS')
 
 class Article_view_set(viewsets.ModelViewSet):
-
-    serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    serializer_class = Article_serializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        self.fetchPayload('real estate','NOW-7DAYS','NOW-6DAYS')
+        fetchPayload('real estate','NOW-7DAYS','NOW-6DAYS')
         return Article.objects.all()
 
     def post(self, request,  format='json'):
-        serializer = ArticleSerializer(data=request.data)
+        serializer = Article_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

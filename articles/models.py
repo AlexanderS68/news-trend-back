@@ -24,6 +24,7 @@ class Article(models.Model):
         self.publishedAt = publishedAt, 
         self.sourceName = sourceName,
         self.sentiment = sentiment
+        
         return Article
 
     
