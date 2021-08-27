@@ -46,7 +46,7 @@ def fetchPayload(requestKeyWord, requestStartDate, requestEndDate):
 fetchPayload('energy','NOW-7DAYS','NOW-6DAYS')
 
 class Article_view_set(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
+
     serializer_class = Article_serializer
     permission_classes = [AllowAny]
 
