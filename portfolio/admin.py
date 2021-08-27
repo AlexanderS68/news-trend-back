@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Stock_watchlist, Article_watchlist
+from .models import Article_watchlist
 # Register your models here.
-admin.site.register(Stock_watchlist)
 admin.site.register(Article_watchlist)
