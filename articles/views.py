@@ -19,39 +19,85 @@ client = aylien_news_api.ApiClient(configuration)
 api_instance = aylien_news_api.DefaultApi(client)
 
 
-
-def fetchPayload(requestKeyWord, requestStartDate, requestEndDate):
+def fetchPayload(requestKeyWord):
+    # payload = {
+    # 'categories_taxonomy':'iab-qag'
+    # 'body':f'{category}',
+    # 'published_at_start':'NOW-1DAY',
+    # 'categories_confident': 'True',
+    # 'cursor': '*'
+    # }
+    # listOf = []
+    # print(listOf, 'init')
+    # if payload['body'] not in listOf:
+    #     api_response = api_instance.list_stories(**payload)
+    #     for idx, article in enumerate(api_response.stories):
+    #         Article.objects.create(
+    #             title = article.title,
+    #             description = article.categories[0].label, 
+    #             content = article.body,
+    #             url = article.source.home_page_url,
+    #             publishedAt = article.published_at,
+    #             sourceName = article.source.name,
+    #             sentiment = article.sentiment.body.polarity)  
+    #         print(type(api_response.stories.body))
+    #     #listOf.append(api_response.stories.body) 
+    #     print(listOf, 'middle') 
+    #     #fetchPayload(api_response.stories.body)
     try:
-        api_response = api_instance.list_stories(
-        title=f'{requestKeyWord}',
-        published_at_start=f'{requestStartDate}',
-        published_at_end=f'{requestEndDate}',
-        per_page=10,
-        sort_by='published_at'
-        )
-        for idx, article in enumerate(api_response.stories):
-            Article.objects.create(
-                title = article.title,
-                description = article.categories[0].label, 
-                content = article.body,
-                url = article.source.home_page_url,
-                publishedAt = article.published_at,
-                sourceName = article.source.name,
-                sentiment = article.sentiment.body.polarity)
+        #In my defense my brain hurts to do the math logic and period doesn't work
+        # for i in range(7):
+            api_response1 = api_instance.list_stories(
+            #title=f'{requestKeyWord}',
+            categories_taxonomy='iptc-subjectcode',
+            categories_id=['04005000'],
+            published_at_start=f'NOW-7DAYS',
+            language=['en'],
+            per_page=10,
+            sort_by='published_at'
+            )
+
+            api_response2 = api_instance.list_stories(
+            #title=f'{requestKeyWord}',
+            categories_taxonomy='iptc-subjectcode',
+            categories_id=['04000000'],
+            published_at_start=f'NOW-7DAYS',
+            language=['en'],
+            per_page=10,
+            sort_by='published_at'
+            )
             
+            #response 1 is energy 2 finance
+            for idx, article in enumerate(api_response1.stories):
+                Article.objects.create(
+                    title = article.title,
+                    description = article.categories[0].label, 
+                    content = article.body,
+                    url = article.source.home_page_url,
+                    publishedAt = article.published_at,
+                    sourceName = article.source.name,
+                    sentiment = article.sentiment.body.polarity)
+
+            for idx, article in enumerate(api_response2.stories):
+                Article.objects.create(
+                    title = article.title,
+                    description = article.categories[0].label, 
+                    content = article.body,
+                    url = article.source.home_page_url,
+                    publishedAt = article.published_at,
+                    sourceName = article.source.name,
+                    sentiment = article.sentiment.body.polarity)
 
     except ApiException as e:
         print("Exception when calling DefaultApi->list_stories: %s\n" % e)
-
-fetchPayload('energy','NOW-7DAYS','NOW-6DAYS')
-
+    
 class Article_view_set(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = Article_serializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
-        fetchPayload('real estate','NOW-7DAYS','NOW-6DAYS')
+        fetchPayload('energy')
         return Article.objects.all()
 
     def post(self, request,  format='json'):
@@ -61,5 +107,3 @@ class Article_view_set(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# def filler(self):
-#    return fetchPayload('energy','NOW-7DAYS','NOW')
