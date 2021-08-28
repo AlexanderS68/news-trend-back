@@ -92,7 +92,7 @@ def fetchPayload(requestKeyWord):
         print("Exception when calling DefaultApi->list_stories: %s\n" % e)
     
 class Article_view_set(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
+
     serializer_class = Article_serializer
     permission_classes = [AllowAny]
 
