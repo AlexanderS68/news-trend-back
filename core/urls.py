@@ -16,6 +16,7 @@ urlpatterns = [
     path('stocks/', include('stocks.urls', namespace='stocks')),
     path('portfolio/', include('portfolio.urls')),
     path('category/', include('category.urls')),
+    path('blog/', include('blog.urls')),
     
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framwork')),
