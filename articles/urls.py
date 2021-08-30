@@ -10,10 +10,8 @@ app_name = 'articles'
 articles_router = DefaultRouter()
 articles_router.register('', Article_view_set, basename='articles')
 
-
 urlpatterns = [
     url('', include(articles_router.urls)),
-    
 ]
 
 
