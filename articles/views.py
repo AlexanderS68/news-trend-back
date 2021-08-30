@@ -36,7 +36,7 @@ def fetchPayload():
         'published_at_start':'NOW-1DAY',
         'categories_confident': 'True',
     }
-
+    
     api_response_articles = api_instance.list_stories(**payload)
 
     for ix, articleReturn in enumerate(api_response_articles.stories):
@@ -59,13 +59,9 @@ def fetchPayload():
         'categories_confident': True
         }
   
-        try: 
-            # List time series
-            api_response = api_instance.list_time_series(**opts)
-            
-        except ApiException as e:
-            pprint("Exception when calling DefaultApi->list_time_series: %s\n" % e)
-
+        # List time series      
+        api_response = api_instance.list_time_series(**opts)            
+        
         for idx, categoryDateSeries in enumerate(api_response.time_series):
 
             Category.objects.create(
@@ -73,21 +69,23 @@ def fetchPayload():
                 count =  categoryDateSeries.count,
                 published_at = categoryDateSeries.published_at,
             )
-        
+
+       
         
     
 class Category_view_set(viewsets.ModelViewSet):
     queryset = Category.objects.all()
-    serializer_class = Article_serializer
+    serializer_class = Category_serializer
     permission_classes = [AllowAny]
 
-    def get_queryset(self):
-        fetchPayload()
+    def get_queryset(self):  
+        #Everytime this ran, it was twice       
+        #fetchPayload()
         return Category.objects.all()
 
     def post(self, request,  format='json'):
         serializer = Category_serializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid():          
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -98,6 +96,8 @@ class Article_view_set(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
     def get_queryset(self):
+        Article.objects.all().delete()
+        Category.objects.all().delete()
         fetchPayload()
         return Article.objects.all()
 

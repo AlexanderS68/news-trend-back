@@ -27,6 +27,14 @@ class Article(models.Model):
         
         return Article
 
+    def deleteArticle(self, title, description, content, url, publishedAt, sourceName, sentiment):
+        self.title = title,
+        self.description = description,
+        self.content = content,
+        self.url = url, 
+        self.publishedAt = publishedAt, 
+        self.sourceName = sourceName,
+        self.sentiment = sentiment
     
     def __str__(self):
         return f"{self.title}"
@@ -45,6 +53,10 @@ class Category(models.Model):
 
         return Category
 
-    
+    def deleteCategory(self, category_name, count, published_at):
+        self.category_name = category_name
+        self.count = count
+        self.published_at = published_at
+
     def __str__(self):
         return f"{self.category_name}"
